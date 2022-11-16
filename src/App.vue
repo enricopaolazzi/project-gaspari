@@ -1,30 +1,32 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+	<layout-base 
+		:menuStructure="menuStructureMenu"
+	>  
+		<template v-slot:content>
+			<router-view/>
+		</template>
+	</layout-base>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import 'gaspari-ui/dist/style.css';
+import 'gaspari-ui/dist/output.css';
+import menuStructure from './menuStructure';
 
-nav {
-  padding: 30px;
+import { defineComponent } from "vue";
+import { LayoutBase } from "gaspari-ui";
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+export default defineComponent({
+	name: 'App',
+	components: {
+		LayoutBase
+	},
+	setup() {
+		const menuStructureMenu = menuStructure;
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+		return {
+			menuStructureMenu
+		}
+	}
+})
+</script>
