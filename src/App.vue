@@ -2,7 +2,7 @@
 	<layout-base 
 		:menuStructure="menuStructureMenu"
 	>  
-		<template v-slot:content>
+		<template v-slot:layout-content>
 			<router-view/>
 		</template>
 	</layout-base>

@@ -5,7 +5,7 @@ const menuStructure : any = [
         children: [
             {
                 id: 11,
-                href: '/clienti',
+                href: '/anagrafiche/clienti',
                 label: 'Clienti',
                 children: []
             },
