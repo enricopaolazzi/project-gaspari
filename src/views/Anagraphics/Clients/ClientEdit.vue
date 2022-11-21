@@ -265,7 +265,7 @@ import SelectOptions from "gaspari-ui/dist/types/types/SelectOptions";
 
 
 export default defineComponent({
-    name: 'ClientView',
+    name: 'ClientEdit',
     components: {
         GenericInput,
         CustomTextArea,
