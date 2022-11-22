@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue';
 import NotFound from '../views/404/NotFound.vue';
 
 import Clients from './Anagraphics/Clients';
+import Agents from './Anagraphics/Agents';
+import Localizations from './Anagraphics/Localizations/Localizations';
 
 const routes: Array<RouteRecordRaw> = [
 	/**
@@ -14,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
 		component: NotFound 
 	}, 
 	/**
-	 * HOME 
+	 * HOME
 	 * */ 
 	{
 		path: '/',
@@ -24,7 +26,16 @@ const routes: Array<RouteRecordRaw> = [
 	/**
 	 * CLIENTI 
 	 * */ 
-	...Clients
+	...Clients,
+	/**
+	 * AGENTI 
+	 * */ 
+	...Agents,
+	/**
+	 * AGENTI 
+	 * */ 
+	...Localizations
+
 ]
 
 const router = createRouter({

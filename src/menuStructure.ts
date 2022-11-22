@@ -28,6 +28,9 @@ const menuStructure : any = [
             {
                 id: 15,
                 label: 'Localizzazioni',
+                href: {
+                    name: 'anagraphics.localizations'
+                },
                 children: []
             },
             {
@@ -38,6 +41,9 @@ const menuStructure : any = [
             {
                 id: 17,
                 label: 'Agenti',
+                href: {
+                    name: 'anagraphics.agents.index'
+                },
                 children: []
             },
             {

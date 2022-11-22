@@ -1,5 +1,5 @@
 <template>
-    <div class="ml-1">
+    <div>
         <breadcrumbs 
             :path_breadcrumbs="[
                 {
