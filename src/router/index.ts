@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue';
 import NotFound from '../views/404/NotFound.vue';
@@ -13,7 +14,10 @@ const routes: Array<RouteRecordRaw> = [
 	{ 
 		path: '/:pathMatch(.*)*', 
 		name: '404', 
-		component: NotFound 
+		component: NotFound,
+		meta: {
+			title: 'Page not found'
+		}
 	}, 
 	/**
 	 * HOME
@@ -21,7 +25,10 @@ const routes: Array<RouteRecordRaw> = [
 	{
 		path: '/',
 		name: 'home',
-		component: HomeView
+		component: HomeView,
+		meta: {
+			title: 'Home'
+		}
 	},
 	/**
 	 * CLIENTI 
@@ -32,7 +39,7 @@ const routes: Array<RouteRecordRaw> = [
 	 * */ 
 	...Agents,
 	/**
-	 * AGENTI 
+	 * LOCALIZZAZIONI 
 	 * */ 
 	...Localizations
 
@@ -43,4 +50,12 @@ const router = createRouter({
     routes,
 });
 
-export default router
+// Change page Title
+const DEFAULT_TITLE = 'Gestionale Gaspari';
+router.beforeEach((to, from, next) => {
+	const title : any = to.meta.title;
+	document.title = title || DEFAULT_TITLE;
+	next();
+});
+
+export default router;

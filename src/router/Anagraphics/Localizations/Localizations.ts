@@ -8,7 +8,10 @@ const Localizations : Array<RouteRecordRaw> = [
     {
 		path: '/anagrafiche/localizzazioni',
 		name: 'anagraphics.localizations',
-		component: LocalizationsView,		
+		component: LocalizationsView,	
+		meta: {
+			title: 'Localizzazioni'
+		}	
 	},
 	/**
 	 * CITTA'
