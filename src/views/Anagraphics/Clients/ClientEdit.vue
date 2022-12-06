@@ -1,11 +1,11 @@
 <template>
-	<div>Singolo Client {{ id }}</div>
+	<div>Singolo Client {{ id }}: ok!</div>
 
     <form-container
         :path_breadcrumbs="[
             {
                 label: 'Home',
-                path: '/home'
+                path: '/'
             },
             {
                 label: 'Form',							
@@ -288,7 +288,7 @@ export default defineComponent({
             required: true
         }
     },
-    setup(props) {
+    setup() {
         const name = ref<string>('Gianni');		
 		let selectedValues = ref<string[]>(['Angular']);
 		const selected = ref<boolean>(true);

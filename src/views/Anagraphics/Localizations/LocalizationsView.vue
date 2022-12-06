@@ -22,7 +22,7 @@
 	</div>
 
 	<div class="mt-8">
-		<h1 class="font-medium uppercase text-xl mb-6">Localizzazioni</h1>
+		<h1 class="font-semibold text-xl uppercase mb-6">Localizzazioni</h1>
 
 		<div class="grid grid-cols-12 gap-6">
 			<router-link :to="{ name: 'anagraphics.localizations.cities.index' }" class="hover:shadow-lg transition col-span-3 bg-white rounded-md shadow px-8 py-16 flex items-center justify-center uppercase font-regular text-xl cursor-pointer">

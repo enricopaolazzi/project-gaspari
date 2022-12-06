@@ -51,7 +51,7 @@ export default defineComponent({
         Breadcrumbs
     },
     props: {},
-    setup(props) {
+    setup() {
         let ok = 'ok';
 
         return {
