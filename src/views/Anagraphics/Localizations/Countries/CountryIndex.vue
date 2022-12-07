@@ -19,9 +19,9 @@
 						}
 					},
 					{
-						label: 'Città',	
+						label: 'Nazioni',	
 						path: {
-							name: 'anagraphics.localizations.cities.index'
+							name: 'anagraphics.localizations.countries.index'
 						}
 					},
 				]"
@@ -36,21 +36,11 @@
 		>						
 			<template v-slot:sidebar-content>				
 				<div v-if="sidebarData !== null">
-					<div class="mb-2"><span class="font-semibold">Codice catastale:</span> {{ sidebarData.properties.cadastral_code }}</div>
-					<div class="mb-2"><span class="font-semibold">Unità territoriale:</span> {{ sidebarData.properties.territorial_unit }}</div>
-					<div class="mb-2"><span class="font-semibold">Città metropolitata:</span> {{ sidebarData.properties.is_metropolitan_city ? 'SI' : 'NO' }}</div>
-					<div class="mb-2"><span class="font-semibold">Divisione geografica:</span> {{ sidebarData.properties.geographical_division }}</div>
-					<div class="mb-2"><span class="font-semibold">Codice IPA:</span> {{ sidebarData.properties.ipaCode }}</div>
-					<div class="mb-2"><span class="font-semibold">Codice ISTAT alfanumerico:</span> {{ sidebarData.properties.istat_code_alpha }}</div>
-					<div class="mb-2"><span class="font-semibold">Codice ISTAT numerico:</span> {{ sidebarData.properties.istat_code_numeric }}</div>
-					<div class="mb-2"><span class="font-semibold">Sigla:</span> {{ sidebarData.properties.plate_abbreviation }}</div>
-					<div class="mb-2"><span class="font-semibold">Provincia:</span> {{ sidebarData.properties.province.name }}</div>
-					<div class="mb-2"><span class="font-semibold">Regione:</span> {{ sidebarData.properties.region.name }}</div>
-					<h5 class="mt-6 mb-3 text-xl font-bold text-black">Statistiche:</h5>
-					<div class="mb-2"><span class="font-semibold">Zona altimetrica:</span> {{ sidebarData.statistics.altimetric_zone }}</div>
-					<div class="mb-2"><span class="font-semibold">Altitudine:</span> {{ sidebarData.statistics.altitude }}</div>
-					<div class="mb-2"><span class="font-semibold">Popolazione legale:</span> {{ sidebarData.statistics.legal_population }}</div>
-					<div class="mb-2"><span class="font-semibold">Popolazione residente:</span> {{ sidebarData.statistics.resident_population }}</div>					
+					<div class="mb-2"><span class="font-semibold">Codice ISO Alpha 2:</span> {{ sidebarData.properties.iso_alpha2 }}</div>
+					<div class="mb-2"><span class="font-semibold">Codice ISO Alpha 3:</span> {{ sidebarData.properties.iso_alpha3 }}</div>
+					<div class="mb-2"><span class="font-semibold">Codice numerico:</span> {{ sidebarData.properties.numeric }}</div>
+					<div class="mb-2"><span class="font-semibold">Zona:</span> {{ sidebarData.properties.zone ? sidebarData.properties.zone : '-' }}</div>
+					
 				</div>
 				<div v-else>Si è verificato un problema...</div>
 			</template>
@@ -67,7 +57,7 @@
 			:perPage="perPage"
 			:currentPage="currentPage"
 			:from="from"
-			title="Città"
+			title="Nazioni"
 			@changed-pagination="handleUpdatePagination"
 			:loading="loadingPagination"
 		>
@@ -94,24 +84,36 @@
 					Nome
 				</th>
 				<th 
-					@click="handleUpdatePaginationWithOrder('cadastral_code')" 
+					@click="handleUpdatePaginationWithOrder('iso_alpha2')" 
 					class="cursor-pointer ordered"
-					:class="setPaginationOrderClasses('cadastral_code')"
+					:class="setPaginationOrderClasses('iso_alpha2')"
 				>
-					cod. catastale
+					cod. ISO Alpha 2
 				</th>
-				<th name="is_metropolitan_city">
-					città metropolitana
+				<th 
+                    name="iso_alpha3"
+                    @click="handleUpdatePaginationWithOrder('iso_alpha3')" 
+					class="cursor-pointer ordered"
+					:class="setPaginationOrderClasses('iso_alpha3')"
+                >
+					cod. ISO Alpha 3
 				</th>
-				<th name="istat_code_alpha">
-					cod. istat (alpha)
+				<th 
+                    name="numeric"
+                    @click="handleUpdatePaginationWithOrder('numeric')" 
+					class="cursor-pointer ordered"
+					:class="setPaginationOrderClasses('numeric')"
+                >
+					cod. numerico
 				</th>
-				<th name="province_name">
-					provincia
-				</th>
-				<th name="region_name">
-					regione
-				</th>				
+				<th 
+                    name="zone"
+                    @click="handleUpdatePaginationWithOrder('zone')" 
+					class="cursor-pointer ordered"
+					:class="setPaginationOrderClasses('zone')"
+                >
+					Zona
+				</th>							
 			</template>
 			<template v-slot:t-body>
 				<tr v-for="(item, index) in results" :key="index" @click="handleOpenDetails(item.id, index)">
@@ -119,20 +121,17 @@
 						{{ item.properties.name }}
 					</td>
 					<td>
-						{{ item.properties.cadastral_code }}
+						{{ item.properties.iso_alpha2 }}
 					</td>
 					<td>
-						{{ item.properties.is_metropolitan_city ? 'SI' : 'NO' }}
+						{{ item.properties.iso_alpha3 }}
 					</td>
 					<td>
-						{{ item.properties.istat_code_alpha }}
+						{{ item.properties.numeric }}
 					</td>
 					<td>
-						{{ item.properties.province_name }}
-					</td>
-					<td>
-						{{ item.properties.region_name }}
-					</td>					
+						{{ item.properties.zone ? item.properties.zone : '-' }}
+					</td>									
 				</tr>
 			</template>
 		</custom-table>
@@ -151,7 +150,7 @@ import {
 } from "gaspari-ui";
 
 export default defineComponent({
-    name: 'CityIndex',
+    name: 'CountryIndex',
     components: {
 		Breadcrumbs,
 		CustomTable,
@@ -178,7 +177,7 @@ export default defineComponent({
 		} = usePagination();
 
 		const handleUpdatePagination = async (e : any) => {
-			await updatePagination(baseApiPath + '/cities', e)
+			await updatePagination(baseApiPath + '/countries', e)
 		};	
 
 		onMounted(async () => {
@@ -220,7 +219,7 @@ export default defineComponent({
 		} = useSidebar();
 		
 		const handleOpenDetails = async (id: number, index: number) => {
-			await openDetails(baseApiPath + '/cities/' + id, index)
+			await openDetails(baseApiPath + '/countries/' + id, index)
 		}
 						
 		return {	

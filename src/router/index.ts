@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue';
 import NotFound from '../views/404/NotFound.vue';
@@ -51,10 +50,10 @@ const router = createRouter({
 });
 
 // Change page Title
-const DEFAULT_TITLE = 'Gestionale Gaspari';
+const DEFAULT_TITLE = process.env.VUE_APP_NAME;
 router.beforeEach((to, from, next) => {
 	const title : any = to.meta.title;
-	document.title = title || DEFAULT_TITLE;
+	document.title = title ? title + ' - ' + DEFAULT_TITLE : DEFAULT_TITLE;
 	next();
 });
 

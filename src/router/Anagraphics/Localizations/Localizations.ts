@@ -3,6 +3,9 @@ import { RouteRecordRaw } from 'vue-router'
 import LocalizationsView from '../../../views/Anagraphics/Localizations/LocalizationsView.vue';
 
 import Cities from './Cities';
+import Regions from './Regions';
+import Countries from './Countries';
+import Provinces from './Provinces';
 
 const Localizations : Array<RouteRecordRaw> = [
     {
@@ -16,18 +19,19 @@ const Localizations : Array<RouteRecordRaw> = [
 	/**
 	 * CITTA'
 	 */
-	...Cities
-    // {
-	// 	path: '/anagrafiche/clienti/crea',
-    //     name: 'anagraphics.Localizations.create',
-    //     component: ClientCreate
-	// },
-	// {
-	// 	path: '/anagrafiche/clienti/:id',
-	// 	name: 'anagraphics.clients.edit',
-	// 	props: true,
-	// 	component: ClientEdit,    
-	// }
+	...Cities,
+	/**
+	 * REGIONI
+	 */
+	...Regions,
+    /**
+	 * NAZIONI
+	 */
+	...Countries,
+	/**
+	 * PROVINCE
+	 */
+	...Provinces
 ];
 
 export default Localizations;

@@ -6,7 +6,10 @@ const Localizations : Array<RouteRecordRaw> = [
     {
 		path: '/anagrafiche/localizzazioni/citta',
 		name: 'anagraphics.localizations.cities.index',
-		component: CityIndex,		
+		component: CityIndex,
+		meta: {
+			title: 'Città'
+		}		
 	}    
 ];
 
