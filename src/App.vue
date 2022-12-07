@@ -1,8 +1,9 @@
-<template>
+<template>	
 	<layout-base 
 		:menuStructure="menuStructureMenu"
 	>  
 		<template v-slot:layout-content>
+			<scroll-to-top />
 			<router-view/>
 		</template>
 	</layout-base>
@@ -14,12 +15,13 @@ import 'gaspari-ui/dist/output.css';
 import menuStructure from './menuStructure';
 
 import { defineComponent } from "vue";
-import { LayoutBase } from "gaspari-ui";
+import { LayoutBase, ScrollToTop } from "gaspari-ui";
 
 export default defineComponent({
 	name: 'App',
 	components: {
-		LayoutBase
+		LayoutBase,
+		ScrollToTop
 	},
 	setup() {
 		const menuStructureMenu = menuStructure;
