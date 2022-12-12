@@ -27,7 +27,7 @@
 				<custom-button
 					label="Salva"
 					styleType="primary-outline"
-					size="default"
+					size="default"					
 				/>
 
 				<div class="ml-5">
@@ -40,7 +40,7 @@
 			</div>						
 		</template>	
 
-		<!-- Frm Content -->
+		<!-- Form Content -->
 		<template v-slot:form-content>
 			<div class="grid grid-cols-12 gap-6">
 				<div class="col-span-6">
@@ -55,11 +55,11 @@
 					<generic-input
 						type="text"
 						placeholder="Inserisci codice fatturazione cliente"
-						label="Codice fatturazione cliente"	
+						label="Codice fatturazione cliente"
 						id="invoice_code"
 						v-model="formData.invoice_code"
 					/>
-				</div>	
+				</div>
 
 				<div class="col-span-12">
 					<custom-text-area
@@ -67,7 +67,7 @@
 						placeholder="Inserisci una descrizione"
 						v-model="formData.description"
 					/>
-				</div>			
+				</div>
 
 				<div class="col-span-12 flex">
 					<div>
@@ -76,7 +76,7 @@
 							v-model:checked="formData.is_active"	
 						/>
 					</div>
-				</div>	
+				</div>
 			</div>
 		</template>
 	</form-container>
@@ -112,7 +112,7 @@ export default defineComponent({
 			paymenttype_id: null,
 			costumertype_id: null,
 			iva_code_id: null,
-			is_active: true			
+			is_active: true
 		});
 
         return {
@@ -121,7 +121,3 @@ export default defineComponent({
     }
 })
 </script>
-
-<style>
-
-</style>
