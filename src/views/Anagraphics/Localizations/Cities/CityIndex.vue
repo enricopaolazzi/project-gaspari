@@ -86,7 +86,7 @@
 						<div class="font-medium text-customBlack">
 							Filtra
 						</div>
-					</div>					
+					</div>
 				</div>
 			</template>
 			<template v-slot:t-head>
