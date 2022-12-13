@@ -88,16 +88,14 @@
 					Nome
 				</th>
 				<th 
-					@click="handleUpdatePaginationWithOrder('geographical_division')" 
-					class="cursor-pointer ordered"
-					:class="setPaginationOrderClasses('geographical_division')"
+					name="geographical_division"
 				>
 					Divisione Geografica
 				</th>				
 				<th name="country_name">
 					Nazione
 				</th>	
-				<th>Province</th>							
+				<th class="max-w-xs">Province</th>							
 			</template>
 			<template v-slot:t-body>
 				<tr v-for="(item, index) in results" :key="index" @click="handleOpenDetails(item.id, index)">
@@ -110,7 +108,7 @@
 					<td>
 						{{ item.properties.country_name }}
 					</td>	
-					<td>						
+					<td class="max-w-xs">						
 						{{ getProvinces(item.properties.provinces.data) }}
 					</td>									
 				</tr>
