@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue';
 import NotFound from '../views/404/NotFound.vue';
+import OAuthCallbackHandler from '../views/OAuthCallbackHandler/OAuthCallbackHandler.vue';
 
 import Clients from './Anagraphics/Clients';
 import Agents from './Anagraphics/Agents';
@@ -17,7 +18,15 @@ const routes: Array<RouteRecordRaw> = [
 		meta: {
 			title: 'Page not found'
 		}
-	}, 
+	},
+	/**
+	 * OAUTH CALLBACK
+	 * */ 
+	{
+		path: '/callback',
+		name: 'OAuthCallbackHandler',
+		component: OAuthCallbackHandler,		
+	},
 	/**
 	 * HOME
 	 * */ 
